@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bind</title>
+	<style type="text/css">
+		*{
+			font-size: 24px;
+		}
+	</style>
+</head>
+<body>
+ <button id="button"></button>
+ <script type="text/javascript">
+ 	class Toogle {
+ 		constructor(button){
+ 			console.log("This in the constructor" + this);
+ 			this.button = button;
+ 			this.button.innerHTML = 'off';
+ 			this.button.activate = false;
+ 			this.button.addEventListener('click',this.onClick.bind(this));
+ 		}
+
+ 		onClick(){
+ 			console.log("Esto es el this del metodo onClick" + this);
+ 			this.onToogleText();
+ 			this.activate = !this.activate; 
+ 		}
+
+ 		onToogleText(){
+ 			this.button.innerHTML = this.activate ? "On":"off";
+ 		}
+ 	}
+
+ 	const button = document.getElementById('button');
+ 	const elementButton = new Toogle(button);
+ </script>
+</body>
+</html>
